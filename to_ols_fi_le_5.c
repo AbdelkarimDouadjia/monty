@@ -1,160 +1,158 @@
 #include "monty.h"
 
 /**
- * open_file - opens a file
- * @file_name: the file namepath
- * Return: void
+ * fi_lle_op_mo - triggers the process of opening a file
+ * @file_name: the file namepath to be accessed
+ * Return: None
  */
 
-void open_file(char *file_name)
+void fi_lle_op_mo(char *nm_fl)
 {
-	FILE *fd = fopen(file_name, "r");
+	FILE *op = fopen(nm_fl, "r");
 
-	if (file_name == NULL || fd == NULL)
-		err(2, file_name);
+	if (nm_fl == NULL || op == NULL)
+		err(2, nm_fl);
 
-	read_file(fd);
-	fclose(fd);
+	rea_d_fi_mo(op);
+	fclose(op);
 }
 
 
 /**
- * read_file - reads a file
- * @fd: pointer to file descriptor
- * Return: void
+ * fi_lle_op_mo - retrieves data from a file
+ * @fd:  pointer referring to the file descriptor
+ * Return: Nothing
  */
 
-void read_file(FILE *fd)
+void fi_lle_op_mo(FILE *opr)
 {
-	int line_number, format = 0;
-	char *buffer = NULL;
-	size_t len = 0;
+	int  nm_l_ine,, fo_r_ma = 0;
+	char *bfs = NULL;
+	size_t len_g = 0;
 
-	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
+	for (nm_l_ine = 1; getline(&bfs, &len_g, opr) != -1; nm_l_ine++)
 	{
-		format = parse_line(buffer, line_number, format);
+		fo_r_ma = par_se_ln_mo(bfs, nm_l_ine, fo_r_ma);
 	}
-	free(buffer);
+	free(bfs);
 }
 
 
 /**
- * parse_line - Separates each line into tokens to determine
- * which function to call
- * @buffer: line from the file
- * @line_number: line number
- * @format:  storage format. If 0 Nodes will be entered as a stack.
- * if 1 nodes will be entered as a queue.
- * Return: Returns 0 if the opcode is stack. 1 if queue.
+ * par_se_ln_mo - Divides each line into tokens to identify
+ * the appropriate function to invoke
+ * @bfs: line extracted from the file
+ * @nm_l_ine:  line number reference
+ * @frt: data representation mode. If 0, nodes are treated as a stack.
+ * If 1, nodes are treated as a queue.
+ * Return: gives us 0 for stack opcode, 1 for queue opcode.
  */
 
-int parse_line(char *buffer, int line_number, int format)
+int par_se_ln_mo(char *bfs, int nm_l_ine, int frt)
 {
-	char *opcode, *value;
-	const char *delim = "\n ";
+    char *o_pc, *val_l;
+    const char *ed = "\n ";
 
-	if (buffer == NULL)
-		err(4);
+    if (bfs == 0)
+        err(4);
 
-	opcode = strtok(buffer, delim);
-	if (opcode == NULL)
-		return (format);
-	value = strtok(NULL, delim);
+    o_pc = strtok(bfs, ed);
+    if (o_pc == 0)
+        return (frt);
+    val_l = strtok(0, ed);
 
-	if (strcmp(opcode, "stack") == 0)
-		return (0);
-	if (strcmp(opcode, "queue") == 0)
-		return (1);
+    if (strcmp(o_pc, "stack") == 0)
+        return (0);
+    if (strcmp(o_pc, "queue") == 0)
+        return (1);
 
-	find_func(opcode, value, line_number, format);
-	return (format);
+    fin_d_fu_mo(o_pc, val_l, nm_l_ine, frt);
+    return (frt);
 }
 
 /**
- * find_func - find the appropriate function for the opcode
- * @opcode: opcode
- * @value: argument of opcode
- * @format:  storage format. If 0 Nodes will be entered as a stack.
- * @ln: line number
- * if 1 nodes will be entered as a queue.
- * Return: void
+ * fin_d_fu_mo - determine the suitable function for the given opcode
+ * @cd_op: operation code
+ * @vla: cd_op parametere
+ * @frt:  storage approach. If 0, nodes follow a stack arrangement.
+ * If 1, nodes follow a queue arrangement.
+ * @count_ln: line count nm
+ * Return: None
  */
-void find_func(char *opcode, char *value, int ln, int format)
+void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
 {
-	int i;
-	int flag;
+    int itera;
+    int glf;
 
-	instruction_t func_list[] = {
-		{"push", add_to_stack},
-		{"pall", print_stack},
-		{"pint", print_top},
-		{"pop", pop_top},
-		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"sub", sub_nodes},
-		{"div", div_nodes},
-		{"mul", mul_nodes},
-		{"mod", mod_nodes},
-		{"pchar", print_char},
-		{"pstr", print_str},
-		{"rotl", rotl},
-		{"rotr", rotr},
-		{NULL, NULL}
-	};
+    instruction_t fn_ls[] = {
+        {"push", add_to_st_mo},
+        {"pall", pri_nt_st_mo},
+        {"pint", pri_nt_to_mo},
+        {"pop", pop_to_mo},
+        {"nop", no_p_mo},
+        {"swap", swa_p_no_mo},
+        {"add", add_nod_mo},
+        {"sub", sub_nod_mo},
+        {"div", div_nod_mo},
+        {"mul", mul_nodes},
+        {"mod", mul_nod_mo},
+        {"pchar", print_char},
+        {"pstr", pri_nt_ch_mo},
+        {"rotl", rot_l_mo},
+        {"rotr", rot_r_mo},
+        {0, 0}};
 
-	if (opcode[0] == '#')
-		return;
+    if (cd_op[0] == '#')
+        return;
 
-	for (flag = 1, i = 0; func_list[i].opcode != NULL; i++)
-	{
-		if (strcmp(opcode, func_list[i].opcode) == 0)
-		{
-			call_fun(func_list[i].f, opcode, value, ln, format);
-			flag = 0;
-		}
-	}
-	if (flag == 1)
-		err(3, ln, opcode);
+    for (glf = 1, itera = 0; fn_ls[itera].cd_op != 0; itera++)
+    {
+        if (strcmp(cd_op, fn_ls[itera].cd_op) == 0)
+        {
+            cal_l_fu_mo(fn_ls[itera].f, cd_op, vla, count_ln, frt);
+            glf = 0;
+        }
+    }
+    if (glf == 1)
+        err(3, count_ln, cd_op);
 }
 
-
 /**
- * call_fun - Calls the required function.
- * @func: Pointer to the function that is about to be called.
- * @op: string representing the opcode.
- * @val: string representing a numeric value.
- * @ln: line numeber for the instruction.
- * @format: Format specifier. If 0 Nodes will be entered as a stack.
- * if 1 nodes will be entered as a queue.
+ * cal_l_fu_mo -  Executes the necessary function.
+ * @functi_n:  Pointer indicating the function to be invoked.
+ * @cp_op: string denoting the operation code.
+ * @vla: string denoting a numerical value.
+ * @nl: line number associated with the instruction.
+ * @style: Representation style. If 0, nodes adhere to stack structure.
+ * If 1, nodes adhere to queue structure.
  */
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void cal_l_fu_mo(mn_op_fn functi_n, char *cp_op, char *vla, int nl, int style)
 {
-	stack_t *node;
-	int flag;
-	int i;
+    stack_t *nde;
+    int gfl;
+    int iter;
 
-	flag = 1;
-	if (strcmp(op, "push") == 0)
-	{
-		if (val != NULL && val[0] == '-')
-		{
-			val = val + 1;
-			flag = -1;
-		}
-		if (val == NULL)
-			err(5, ln);
-		for (i = 0; val[i] != '\0'; i++)
-		{
-			if (isdigit(val[i]) == 0)
-				err(5, ln);
-		}
-		node = create_node(atoi(val) * flag);
-		if (format == 0)
-			func(&node, ln);
-		if (format == 1)
-			add_to_queue(&node, ln);
-	}
-	else
-		func(&head, ln);
+    gfl = 1;
+    if (strcmp(cp_op, "push") == 0)
+    {
+        if (vla != NULL && vla[0] == '-')
+        {
+            vla = vla + 1;
+            gfl = -1;
+        }
+        if (vla == NULL)
+            er_r_mo(5, nl);
+        for (iter = 0; vla[iter] != '\0'; iter++)
+        {
+            if (isdigit(vla[iter]) == 0)
+                er_r_mo(5, nl);
+        }
+        nde = cre_ate_nod_mo(atoi(vla) * gfl);
+        if (style == 0)
+            functi_n(&nde, nl);
+        if (style == 1)
+            add_to_qu_mo(&nde, nl);
+    }
+    else
+        functi_n(&head, nl);
 }
