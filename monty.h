@@ -20,9 +20,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
 } stack_t;
 
 /**
@@ -35,8 +35,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+    char *opcode;
+    void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /* End :Do not edit them */
@@ -45,42 +45,42 @@ extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
-void open_file(char *file_name);
-int parse_line(char *buffer, int line_number, int format);
-void read_file(FILE *);
-int len_chars(FILE *);
-void find_func(char *, char *, int, int);
+void fi_lle_op_mo(char *file_name);                           /* old: open_file -> new: fi_lle_op_mo*/
+int par_se_ln_mo(char *buffer, int line_number, int format);  /* old: parse_line -> new: par_se_ln_mo*/
+void rea_d_fi_mo(FILE *);                                     /* old: read_file -> new: rea_d_fi_mo*/
+int len_cha_mo(FILE *);                                       /* old: len_chars -> new: len_cha_mo*/
+void fin_d_fu_mo(char *, char *, int, int);                   /* old: find_func -> new: fin_d_fu_mo*/
 
 /*Stack operations*/
-stack_t *create_node(int n);
-void free_nodes(void);
-void print_stack(stack_t **, unsigned int);
-void add_to_stack(stack_t **, unsigned int);
-void add_to_queue(stack_t **, unsigned int);
+stack_t *cre_ate_nod_mo(int n);  /* old: create_node -> new: cre_ate_nod_mo*/
+void fre_e_nod_mo(void);         /* old: free_nodes -> new: fre_e_nod_mo*/
+void pri_nt_st_mo(stack_t **, unsigned int);       /* old: print_stack -> new: pri_nt_st_mo*/
+void add_to_st_mo(stack_t **, unsigned int);       /* old: add_to_stack -> new: add_to_st_mo*/
+void add_to_qu_mo(stack_t **, unsigned int);       /* old: add_to_queue -> new: add_to_qu_mo*/
 
-void call_fun(op_func, char *, char *, int, int);
+void cal_l_fu_mo(op_func, char *, char *, int, int); /* old: call_fun -> new: cal_l_fu_mo*/
 
-void print_top(stack_t **, unsigned int);
-void pop_top(stack_t **, unsigned int);
-void nop(stack_t **, unsigned int);
-void swap_nodes(stack_t **, unsigned int);
+void pri_nt_to_mo(stack_t **, unsigned int);  /* old: print_top -> new: pri_nt_to_mo*/
+void pop_to_mo(stack_t **, unsigned int);     /* old: pop_top -> new: pop_to_mo*/
+void no_p_mo(stack_t **, unsigned int);       /* old: nop -> new: no_p_mo*/
+void swa_p_no_mo(stack_t **, unsigned int);   /* old: swap_nodes -> new: swa_p_no_mo*/
 
 /*Math operations with nodes*/
-void add_nodes(stack_t **, unsigned int);
-void sub_nodes(stack_t **, unsigned int);
-void div_nodes(stack_t **, unsigned int);
-void mul_nodes(stack_t **, unsigned int);
-void mod_nodes(stack_t **, unsigned int);
+void add_nod_mo(stack_t **, unsigned int);     /* old: add_nodes -> new: add_nod_mo*/
+void sub_nod_mo(stack_t **, unsigned int);     /* old: sub_nodes -> new: sub_nod_mo*/
+void div_nod_mo(stack_t **, unsigned int);     /* old: div_nodes -> new: div_nod_mo*/
+void mul_nod_mo(stack_t **, unsigned int);     /* old: mul_nodes -> new: mul_nod_mo*/
+void mod_nod_mo(stack_t **, unsigned int);     /* old: mod_nodes -> new: mod_nod_mo*/
 
 /*String operations*/
-void print_char(stack_t **, unsigned int);
-void print_str(stack_t **, unsigned int);
-void rotl(stack_t **, unsigned int);
+void pri_nt_ch_mo(stack_t **, unsigned int);   /* old: print_char -> new: pri_nt_ch_mo*/
+void pri_nt_st_mo(stack_t **, unsigned int);   /* old: print_str -> new: pri_nt_st_mo*/
+void rot_l_mo(stack_t **, unsigned int);       /* old: rotl -> new: rot_l_mo*/
 
 /*Error hanlding*/
-void err(int error_code, ...);
-void more_err(int error_code, ...);
-void string_err(int error_code, ...);
-void rotr(stack_t **, unsigned int);
+void er_r_mo(int error_code, ...);     /* old: err -> new: er_r_mo*/
+void mor_e_er_mo(int error_code, ...); /* old: more_err -> new: mor_e_er_mo*/
+void str_ing_er_mo(int error_code, ...);   /* old: string_err -> new: str_ing_er_mo*/
+void rot_r_mo(stack_t **, unsigned int);   /* old: rotr -> new: rot_r_mo*/
 
 #endif
