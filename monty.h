@@ -42,12 +42,12 @@ typedef struct instruction_s
 /* End :Do not edit them */
 
 extern stack_t *head;
-typedef void (*op_func)(stack_t **, unsigned int);
+typedef void (*mn_op_fn)(stack_t **, unsigned int);
 
 /*file operations*/
-void fi_lle_op_mo(char *file_name);                           /* old: open_file -> new: fi_lle_op_mo*/
-int par_se_ln_mo(char *buffer, int line_number, int format);  /* old: parse_line -> new: par_se_ln_mo*/
-void rea_d_fi_mo(FILE *);                                     /* old: read_file -> new: rea_d_fi_mo*/
+void fi_lle_op_mo(char *nm_fl);                           /* old: open_file -> new: fi_lle_op_mo / argument= old: file_name -> nm_fl*/ /**/
+int par_se_ln_mo(char *bfs, int nm_l_ine, int frt);  /* old: parse_line -> new: par_se_ln_mo*/ /**/
+void rea_d_fi_mo(FILE *);                                     /* old: read_file -> new: rea_d_fi_mo*/ /**/
 int len_cha_mo(FILE *);                                       /* old: len_chars -> new: len_cha_mo*/
 void fin_d_fu_mo(char *, char *, int, int);                   /* old: find_func -> new: fin_d_fu_mo*/
 
@@ -58,7 +58,7 @@ void pri_nt_st_mo(stack_t **, unsigned int);       /* old: print_stack -> new: p
 void add_to_st_mo(stack_t **, unsigned int);       /* old: add_to_stack -> new: add_to_st_mo*/
 void add_to_qu_mo(stack_t **, unsigned int);       /* old: add_to_queue -> new: add_to_qu_mo*/
 
-void cal_l_fu_mo(op_func, char *, char *, int, int); /* old: call_fun -> new: cal_l_fu_mo*/
+void cal_l_fu_mo(mn_op_fn, char *, char *, int, int); /* old: call_fun -> new: cal_l_fu_mo*/
 
 void pri_nt_to_mo(stack_t **, unsigned int);  /* old: print_top -> new: pri_nt_to_mo*/
 void pop_to_mo(stack_t **, unsigned int);     /* old: pop_top -> new: pop_to_mo*/
