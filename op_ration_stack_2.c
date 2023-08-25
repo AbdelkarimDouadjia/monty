@@ -1,44 +1,42 @@
 #include "monty.h"
 
 /**
- * mul_nodes - Adds the top two elements of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * mor_e_er_mo -  Computes the product of the top two stack elements.
+ * @pile:  Double pointer referencing the stack's uppermost node.
+ * @lin_numbr:  Integer indicating the opcode's line number.
  */
-void mul_nodes(stack_t **stack, unsigned int line_number)
+void mor_e_er_mo(stack_t **pile, unsigned int lin_numbr)
 {
-	int sum;
+    int som;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		more_err(8, line_number, "mul");
+    if ((*pile)->next == NULL || *pile == NULL || pile == NULL)
+        mor_e_er_mo(8, lin_numbr, "mul");
 
-	(*stack) = (*stack)->next;
-	sum = (*stack)->n * (*stack)->prev->n;
-	(*stack)->n = sum;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+    (*pile) = (*pile)->next;
+    som = (*pile)->n * (*pile)->prev->n;
+    (*pile)->n = som;
+    free((*pile)->prev);
+    (*pile)->prev = NULL;
 }
 
-
 /**
- * mod_nodes - Adds the top two elements of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * mod_nod_mo - Calculates the remainder of dividing the top two stack elements.
+ * @pile: Double pointer referencing the stack's uppermost node.
+ * @ln_numbr:  Integer indicating the opcode's line number.
  */
-void mod_nodes(stack_t **stack, unsigned int line_number)
+void mod_nod_mo(stack_t **pile, unsigned int ln_numbr)
 {
-	int sum;
+    int some;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+    if (pile == NULL || *pile == NULL || (*pile)->next == NULL)
 
-		more_err(8, line_number, "mod");
+        mor_e_er_mo(8, ln_numbr, "mod");
 
-
-	if ((*stack)->n == 0)
-		more_err(9, line_number);
-	(*stack) = (*stack)->next;
-	sum = (*stack)->n % (*stack)->prev->n;
-	(*stack)->n = sum;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
+    if ((*pile)->n == 0)
+        mor_e_er_mo(9, ln_numbr);
+    (*pile) = (*pile)->next;
+    some = (*pile)->n % (*pile)->prev->n;
+    (*pile)->n = some;
+    free((*pile)->prev);
+    (*pile)->prev = NULL;
 }
