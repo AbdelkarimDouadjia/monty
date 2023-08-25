@@ -22,7 +22,8 @@ void mul_nod_mo(stack_t **pile, unsigned int lin_numbr)
 }
 
 /**
- * mod_nod_mo - Calculates the remainder of dividing the top two stack elements.
+ * mod_nod_mo - Calculates the remainder of dividing the top two stack 
+ * elements.
  * @pile: Double pointer referencing the stack's uppermost node.
  * @ln_numbr:  Integer indicating the opcode's line number.
  */
