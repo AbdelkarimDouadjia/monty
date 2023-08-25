@@ -11,14 +11,14 @@ stack_t *head = NULL;
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-    fi_lle_op_mo(argv[1]);
-    fre_e_nod_mo();
-    return 0;
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	fi_lle_op_mo(argv[1]);
+	fre_e_nod_mo();
+	return 0;
 }
 
 /**
@@ -28,17 +28,17 @@ int main(int argc, char *argv[])
  */
 stack_t *cre_ate_nod_mo(int n)
 {
-    stack_t *case;
+	stack_t *case;
 
-    case = malloc(sizeof(stack_t));
-    if (case == NULL)
-        er_r_mo(16);
-    case->next = NULL;
+	case = malloc(sizeof(stack_t));
+	if (case == NULL)
+		er_r_mo(16);
+	case->next = NULL;
 
-    case->prev = NULL;
+	case->prev = NULL;
 
-    case->n = x;
-    return (case);
+	case->n = x;
+	return (case);
 }
 
 /**
@@ -46,17 +46,17 @@ stack_t *cre_ate_nod_mo(int n)
  */
 void fre_e_nod_mo()
 {
-    stack_t *p;
+	stack_t *p;
 
-    if (head == NULL)
-        return;
+	if (head == NULL)
+		return;
 
-    while (head != NULL)
-    {
-        p = head;
-        head = head->next;
-        free(p);
-    }
+	while (head != NULL)
+	{
+		p = head;
+		head = head->next;
+		free(p);
+	}
 }
 
 /**
@@ -66,19 +66,20 @@ void fre_e_nod_mo()
  */
 void add_to_qu_mo(stack_t **item, __attribute__((unused)) unsigned int val_ln)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if (*item == NULL|| item == NULL)
-        exit(EXIT_FAILURE);
-    if (head == NULL)
-    {
-        head = *item;
-        return;
-    }
-    temp = head;
-    while (temp->next != NULL)
-        temp = temp->next;
+	if (*item == NULL|| item == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *item;
+		return;
+	}
+	temp = head;
 
-    temp->next = *item;
-    (*item)->prev = temp;
+	while (temp->next != NULL)
+		temp = temp->next;
+
+	temp->next = *item;
+	(*item)->prev = temp;
 }
