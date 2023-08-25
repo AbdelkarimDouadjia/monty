@@ -80,4 +80,4 @@ Available operation codes:
 
 By:
 Mubarak Kazeem <Kazeemmubarak@gmail.com>
-Abdelkarim Douadjia <dzkarim748@gmail.com>
+Abdelkarim Douadjia <abdelkarim.douadjia@gmail.Com>
