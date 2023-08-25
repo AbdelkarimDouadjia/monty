@@ -2,13 +2,12 @@
 #define MONTY_H
 
 #define _GNU_SOURCE
-#include <stdio.h>
-#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <stdarg.h>
-
+#include <unistd.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -43,43 +42,38 @@ typedef struct instruction_s
 typedef void (*mn_op_fn)(stack_t **, unsigned int);
 extern stack_t *head;
 
-/*file operations*/
-void fi_lle_op_mo(char *nm_fl);                           /* old: open_file -> new: fi_lle_op_mo / argument= old: file_name -> nm_fl*/ /**/
-int par_se_ln_mo(char *bfs, int nm_l_ine, int frt);  /* old: parse_line -> new: par_se_ln_mo*/ /**/
-void rea_d_fi_mo(FILE *);                                     /* old: read_file -> new: rea_d_fi_mo*/ /**/
-int len_cha_mo(FILE *);                                       /* old: len_chars -> new: len_cha_mo*/
-void fin_d_fu_mo(char *, char *, int, int);                   /* old: find_func -> new: fin_d_fu_mo*/
+void mor_e_er_mo(int incorect, ...);
+void str_ing_er_mo(int incorect, ...);
+void rot_r_mo(stack_t **, unsigned int);
+void er_r_mo(int incorect, ...);
 
-/*Stack operations*/
-stack_t *cre_ate_nod_mo(int n);  /* old: create_node -> new: cre_ate_nod_mo*/
-void fre_e_nod_mo(void);         /* old: free_nodes -> new: fre_e_nod_mo*/
-void pri_nt_st_mo(stack_t **, unsigned int);       /* old: print_stack -> new: pri_nt_st_mo*/
-void add_to_st_mo(stack_t **, unsigned int);       /* old: add_to_stack -> new: add_to_st_mo*/
-void add_to_qu_mo(stack_t **, unsigned int);       /* old: add_to_queue -> new: add_to_qu_mo*/
+void add_nod_mo(stack_t **, unsigned int);
+void div_nod_mo(stack_t **, unsigned int);
+void sub_nod_mo(stack_t **, unsigned int);
+void mod_nod_mo(stack_t **, unsigned int);
+void mul_nod_mo(stack_t **, unsigned int);
 
-void cal_l_fu_mo(mn_op_fn, char *, char *, int, int); /* old: call_fun -> new: cal_l_fu_mo*/
+void pri_nt_st_mo(stack_t **, unsigned int);
+stack_t *cre_ate_nod_mo(int n);
+void add_to_st_mo(stack_t **, unsigned int);
+void add_to_qu_mo(stack_t **, unsigned int);
+void fre_e_nod_mo(void);
 
-void pri_nt_to_mo(stack_t **, unsigned int);  /* old: print_top -> new: pri_nt_to_mo*/
-void pop_to_mo(stack_t **, unsigned int);     /* old: pop_top -> new: pop_to_mo*/
-void no_p_mo(stack_t **, unsigned int);       /* old: nop -> new: no_p_mo*/
-void swa_p_no_mo(stack_t **, unsigned int);   /* old: swap_nodes -> new: swa_p_no_mo*/
+void cal_l_fu_mo(mn_op_fn, char *, char *, int, int);
 
-/*Math operations with nodes*/
-void add_nod_mo(stack_t **, unsigned int);     /* old: add_nodes -> new: add_nod_mo*/
-void sub_nod_mo(stack_t **, unsigned int);     /* old: sub_nodes -> new: sub_nod_mo*/
-void div_nod_mo(stack_t **, unsigned int);     /* old: div_nodes -> new: div_nod_mo*/
-void mul_nod_mo(stack_t **, unsigned int);     /* old: mul_nodes -> new: mul_nod_mo*/
-void mod_nod_mo(stack_t **, unsigned int);     /* old: mod_nodes -> new: mod_nod_mo*/
+void no_p_mo(stack_t **, unsigned int);
+void pop_to_mo(stack_t **, unsigned int);
+void swa_p_no_mo(stack_t **, unsigned int);
+void pri_nt_to_mo(stack_t **, unsigned int);
 
-/*String operations*/
-void pri_nt_ch_mo(stack_t **, unsigned int);   /* old: print_char -> new: pri_nt_ch_mo*/
-void pri_nt_st_mo(stack_t **, unsigned int);   /* old: print_str -> new: pri_nt_st_mo*/
-void rot_l_mo(stack_t **, unsigned int);       /* old: rotl -> new: rot_l_mo*/
+void rot_l_mo(stack_t **, unsigned int);
+void pri_nt_ch_mo(stack_t **, unsigned int);
+void pri_nt_st_mo(stack_t **, unsigned int);
 
-/*Error hanlding*/
-void er_r_mo(int incorect, ...);     /* old: err -> new: er_r_mo*/
-void mor_e_er_mo(int incorect, ...); /* old: more_err -> new: mor_e_er_mo*/
-void str_ing_er_mo(int incorect, ...);   /* old: string_err -> new: str_ing_er_mo*/
-void rot_r_mo(stack_t **, unsigned int);   /* old: rotr -> new: rot_r_mo*/
+int len_cha_mo(FILE *);
+int par_se_ln_mo(char *bfs, int nm_l_ine, int frt);
+void fin_d_fu_mo(char *, char *, int, int);
+void rea_d_fi_mo(FILE *);
+void fi_lle_op_mo(char *nm_fl);
 
 #endif
