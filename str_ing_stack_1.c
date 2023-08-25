@@ -1,95 +1,94 @@
 #include "monty.h"
 
 /**
- * print_char - Prints the Ascii value.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * pri_nt_ch_mo - Outputs the ASCII representation.
+ * @pill: Double pointer referencing the stack's top node.
+ * @numb_lin: Integer indicating the opcode's line number.
  */
-void print_char(stack_t **stack, unsigned int line_number)
+void pri_nt_ch_mo(stack_t **pill, unsigned int numb_lin)
 {
-	int ascii;
+    int g;
 
-	if (stack == NULL || *stack == NULL)
-		string_err(11, line_number);
+    if (pill == NULL || *pill == NULL)
+        str_ing_er_mo(11, numb_lin);
 
-	ascii = (*stack)->n;
-	if (ascii < 0 || ascii > 127)
-		string_err(10, line_number);
-	printf("%c\n", ascii);
+    g = (*pill)->n;
+    if (g > 127 || g <= 0)
+        str_ing_er_mo(10, numb_lin);
+    printf("%c\n", g);
 }
 
 /**
- * print_str - Prints a string.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
+ * pri_nt_st_mo - Displays a stri.
+ * @pill:  Double pointer referencing the stack's top node.
+ * @ln_numb:  Integer indicating the opcode's line number.
  */
-void print_str(stack_t **stack, __attribute__((unused))unsigned int ln)
+void pri_nt_st_mo(stack_t **pill, __attribute__((unused)) unsigned int ln_numb)
 {
-	int ascii;
-	stack_t *tmp;
+    int g;
+    stack_t *temp;
 
-	if (stack == NULL || *stack == NULL)
-	{
-		printf("\n");
-		return;
-	}
+    if (pill == NULL || *pill == NULL)
+    {
+        printf("\n");
+        return;
+    }
 
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		ascii = tmp->n;
-		if (ascii <= 0 || ascii > 127)
-			break;
-		printf("%c", ascii);
-		tmp = tmp->next;
-	}
-	printf("\n");
+    temp = *pill;
+    while (temp != NULL)
+    {
+        g = temp->n;
+        if (g > 127 || g <= 0)
+            break;
+        printf("%c", g);
+        temp = temp->next;
+    }
+    printf("\n");
 }
 
 /**
- * rotl - Rotates the first node of the stack to the bottom.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
+ * rot_l_mo -  Moves the initial stack node to the end through rotation.
+ * @stack: Double pointer referencing the stack's uppermost node.
+ * @l_n_numb: Integer denoting the opcode's line number.
  */
-void rotl(stack_t **stack, __attribute__((unused))unsigned int ln)
+void rot_l_mo(stack_t **pill, __attribute__((unused)) unsigned int l_n_numb)
 {
-	stack_t *tmp;
+    stack_t *temp;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
+    if (pill == NULL || *pill == NULL || (*pill)->next == NULL)
+        return;
 
-	tmp = *stack;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
+    temp = *pill;
+    while (temp->next != NULL)
+        temp = temp->next;
 
-	tmp->next = *stack;
-	(*stack)->prev = tmp;
-	*stack = (*stack)->next;
-	(*stack)->prev->next = NULL;
-	(*stack)->prev = NULL;
+    temp->next = *pill;
+    (*pill)->prev = temp;
+    *pill = (*pill)->next;
+    (*pill)->prev->next = NULL;
+    (*pill)->prev = NULL;
 }
 
-
 /**
- * rotr - Rotates the last node of the stack to the top.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @ln: Interger representing the line number of of the opcode.
+ * rot_r_mo - Shifts the final stack node to the beginning.
+ * @pile: Double pointer referencing the stack's uppermost node.
+ * @l_n_numb:  Integer indicating the opcode's line number.
  */
-void rotr(stack_t **stack, __attribute__((unused))unsigned int ln)
+void rot_r_mo(stack_t **pile, __attribute__((unused)) unsigned int l_n_numb)
 {
-	stack_t *tmp;
+    stack_t *temp;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
+    if ((*pile)->next == NULL || *pile == NULL || pile == NULL)
+        return;
 
-	tmp = *stack;
+    temp = *pile;
 
-	while (tmp->next != NULL)
-		tmp = tmp->next;
+    while (temp->next != NULL)
+        temp = temp->next;
 
-	tmp->next = *stack;
-	tmp->prev->next = NULL;
-	tmp->prev = NULL;
-	(*stack)->prev = tmp;
-	(*stack) = tmp;
+    temp->next = *pile;
+    temp->prev->next = NULL;
+    temp->prev = NULL;
+    (*pile)->prev = temp;
+    (*pile) = temp;
 }
