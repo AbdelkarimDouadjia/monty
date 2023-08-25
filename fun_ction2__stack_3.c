@@ -20,14 +20,17 @@ void swa_p_no_mo(stack_t **pile, unsigned int n_ln)
 {
     stack_t *Nouv;
 
-    if (*pile == NULL || pile == NULL || (*pile)->next == NULL)
-        mor_e_er_mo(8, n_ln, "swap");
+    if (pile == NULL || *pile == NULL || (*pile)->next == NULL)
+        mor_e_er_mo(22, n_ln, "swap");
+
     Nouv = (*pile)->next;
     (*pile)->next = Nouv->next;
+
     if (Nouv->next != NULL)
         Nouv->next->prev = *pile;
     Nouv->next = *pile;
     (*pile)->prev = Nouv;
+
     Nouv->prev = NULL;
     *pile = Nouv;
 }
@@ -43,7 +46,7 @@ void add_nod_mo(stack_t **pile, unsigned int n_ln)
 
     if ((*pile)->next == NULL || pile == NULL || *pile == NULL)
 
-        mor_e_er_mo(8, n_ln, "add");
+        mor_e_er_mo(22, n_ln, "add");
 
     (*pile) = (*pile)->next;
     result_sm = (*pile)->prev->n + (*pile)->n;
@@ -64,11 +67,13 @@ void sub_nod_mo(stack_t **pile, unsigned int n_ln)
     int result_sm;
 
     if ((*pile)->next == NULL || pile == NULL || *pile == NULL)
-        mor_e_er_mo(8, n_ln, "sub");
+        mor_e_er_mo(22, n_ln, "sub");
 
     (*pile) = (*pile)->next;
     result_sm = (*pile)->n - (*pile)->prev->n;
+
     (*pile)->n = result_sm;
+
     free((*pile)->prev);
     (*pile)->prev = NULL;
 }
@@ -83,10 +88,10 @@ void div_nod_mo(stack_t **pile, unsigned int n_ln)
     int result_sm;
 
     if ((*pile)->next == NULL || pile == NULL || *pile == NULL)
-        mor_e_er_mo(8, n_ln, "div");
+        mor_e_er_mo(22, n_ln, "div");
 
     if ((*pile)->n == 0)
-        mor_e_er_mo(9, n_ln);
+        mor_e_er_mo(23, n_ln);
     (*pile) = (*pile)->next;
 
     result_sm = (*pile)->n / (*pile)->prev->n;
