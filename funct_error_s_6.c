@@ -17,24 +17,24 @@ void er_r_mo(int incorect, ...)
 
     va_start(k, incorect);
     if (incorect == 15)
-    { // case 5
+    {
         fprintf(stderr, "L%d: usage: push integer\n", va_arg(k, int));
     }
     else if (incorect == 19)
-    { // case 1
+    {
         fprintf(stderr, "USAGE: monty file\n");
     }
     else if (incorect == 16)
-    { // case 4
+    {
         fprintf(stderr, "Error: malloc failed\n");
     }
     else if (incorect == 18)
-    { // case 2
+    {
         fprintf(stderr, "Error: Can't open file %s\n",
                 va_arg(k, char *));
     }
     else if (incorect == 17)
-    { // case 3
+    {
         nu_mbr_lnde = va_arg(k, int);
         ch = va_arg(k, char *);
         fprintf(stderr, "L%d: unknown instruction %s\n", nu_mbr_lnde, ch);
@@ -60,23 +60,23 @@ void mor_e_er_mo(int incorect, ...)
     va_start(k, incorect);
 
     if (incorect == 22)
-    { // case 8
+    {
         nu_mbr_lnde = va_arg(k, unsigned int);
         ch = va_arg(k, char *);
         fprintf(stderr, "L%d: can't %s, stack too short\n", nu_mbr_lnde, ch);
     }
     else if (incorect == 23)
-    { // case 9
+    {
         fprintf(stderr, "L%d: division by zero\n",
                 va_arg(k, unsigned int));
     }
     else if (incorect == 20)
-    { // case 6
+    {
         fprintf(stderr, "L%d: can't pchar, stack empty\n",
                 va_arg(k, int));
     }
     else if (incorect == 21)
-    { // case 7
+    {
         fprintf(stderr, "L%d: can't pop an empty stack\n",
                 va_arg(k, int));
     }
@@ -100,11 +100,11 @@ void str_ing_er_mo(int incorect, ...)
     va_start(k, incorect);
     nu_mbr_lnde = va_arg(k, int);
     if (incorect == 24)
-    { // case 11
+    {
         fprintf(stderr, "L%d: can't pchar, stack empty\n", nu_mbr_lnde);
     }
     else if (incorect == 25)
-    { // case 10
+    {
         fprintf(stderr, "L%d: can't pchar, value out of range\n", nu_mbr_lnde);
     }
     fre_e_nod_mo();
