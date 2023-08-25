@@ -11,36 +11,35 @@
  */
 void er_r_mo(int incorect, ...)
 {
-    char *ch;
-    int nu_mbr_lnde;
-    va_list k;
+	char *ch;
+	int nu_mbr_lnde;
+	va_list k;
 
-    va_start(k, incorect);
-    if (incorect == 15)
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", va_arg(k, int));
-    }
-    else if (incorect == 19)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-    }
-    else if (incorect == 16)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-    }
-    else if (incorect == 18)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n",
-                va_arg(k, char *));
-    }
-    else if (incorect == 17)
-    {
-        nu_mbr_lnde = va_arg(k, int);
-        ch = va_arg(k, char *);
-        fprintf(stderr, "L%d: unknown instruction %s\n", nu_mbr_lnde, ch);
-    }
-    fre_e_nod_mo();
-    exit(EXIT_FAILURE);
+	va_start(k, incorect);
+	if (incorect == 15)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", va_arg(k, int));
+	}
+	else if (incorect == 19)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+	}
+	else if (incorect == 16)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+	}
+	else if (incorect == 18)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", va_arg(k, char *));
+	}
+	else if (incorect == 17)
+	{
+		nu_mbr_lnde = va_arg(k, int);
+		ch = va_arg(k, char *);
+		fprintf(stderr, "L%d: unknown instruction %s\n", nu_mbr_lnde, ch);
+	}
+	fre_e_nod_mo();
+	exit(EXIT_FAILURE);
 }
 
 /**
