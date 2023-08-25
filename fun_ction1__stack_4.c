@@ -2,75 +2,81 @@
 
 
 /**
- * add_to_stack - Adds a node to the stack.
- * @new_node: Pointer to the new node.
- * @ln: Interger representing the line number of of the opcode.
+ * pri_nt_to_mo - Shows the uppermost node in the pile.
+ * @pile: Double pointer referencing the pile's highest node.
+ * @n_ln:  Integer indicating the opcode's line number.
  */
-void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
+void pri_nt_to_mo(stack_t **pile, unsigned int n_ln)
 {
-	stack_t *tmp;
+    if (*pile == NULL || pile == NULL)
+        mor_e_er_mo(6, n_ln);
 
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
-	}
-	tmp = head;
-	head = *new_node;
-	head->next = tmp;
-	tmp->prev = head;
-}
-
-
-/**
- * print_stack - Adds a node to the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: line number of  the opcode.
- */
-void print_stack(stack_t **stack, unsigned int line_number)
-{
-	stack_t *tmp;
-
-	(void) line_number;
-	if (stack == NULL)
-		exit(EXIT_FAILURE);
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
-	}
+    printf("%d\n", (*pile)->n);
 }
 
 /**
- * pop_top - Adds a node to the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * pri_nt_st_mo - Presents the stack's contents.
+ * @pile: Double pointer referencing the pile's uppermost node.
+ * @n_ln:  Line number associated with the opcode.
  */
-void pop_top(stack_t **stack, unsigned int line_number)
+void pri_nt_st_mo(stack_t **pile, unsigned int n_ln)
 {
-	stack_t *tmp;
+    stack_t *p;
+    (void)n_ln;
 
-	if (stack == NULL || *stack == NULL)
-		more_err(7, line_number);
+    if (pile == NULL)
+        exit(EXIT_FAILURE);
 
-	tmp = *stack;
-	*stack = tmp->next;
-	if (*stack != NULL)
-		(*stack)->prev = NULL;
-	free(tmp);
+    p = *pile;
+    while (p != NULL)
+    {
+        printf("%d\n", p->n);
+        p = p->next;
+    }
 }
 
 /**
- * print_top - Prints the top node of the stack.
- * @stack: Pointer to a pointer pointing to top node of the stack.
- * @line_number: Interger representing the line number of of the opcode.
+ * add_to_st_mo -  Appends a node to the stack.
+ * @Nouv:  pointo the new produced item.
+ * @n_ln:  Integer denoting the opcode's line number.
  */
-void print_top(stack_t **stack, unsigned int line_number)
+void add_to_st_mo(stack_t **Nouv, __attribute__((unused)) unsigned int n_ln)
 {
-	if (stack == NULL || *stack == NULL)
-		more_err(6, line_number);
-	printf("%d\n", (*stack)->n);
+    stack_t *p;
+
+    if (*Nouv == NULL || Nouv == NULL)
+        exit(EXIT_FAILURE);
+
+    if (head == NULL)
+    {
+        head = *Nouv;
+        return;
+    }
+    p = head;
+
+    head = *Nouv;
+    head->next = p;
+
+    p->prev = head;
+}
+
+/**
+ * pop_to_mo - Eliminates the uppermost node in the pile.
+ * @pile: Double pointer referencing the pile's highest item.
+ * @n_ln: Integer denoting the opcode's line number.
+ */
+void pop_to_mo(stack_t **pile, unsigned int n_ln)
+{
+    stack_t *p;
+
+    if (pile == NULL || *pile == NULL)
+        mor_e_er_mo(7, n_ln);
+
+    p = *pile;
+    *pile = p->next;
+
+    if (*pile != NULL)
+        (*pile)->prev = NULL;
+
+    free(p);
 }
