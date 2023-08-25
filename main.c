@@ -1,5 +1,6 @@
 #include "monty.h"
-stack_t *tete = NULL;
+
+stack_t *head = NULL;
 
 /**
  * main -  starting point
@@ -47,13 +48,13 @@ void fre_e_nod_mo()
 {
     stack_t *p;
 
-    if (tete == NULL)
+    if (head == NULL)
         return;
 
-    while (tete != NULL)
+    while (head != NULL)
     {
-        p = tete;
-        tete = tete->next;
+        p = head;
+        head = head->next;
         free(p);
     }
 }
@@ -69,12 +70,12 @@ void add_to_qu_mo(stack_t **item, __attribute__((unused)) unsigned int val_ln)
 
     if (*item == NULL|| item == NULL)
         exit(EXIT_FAILURE);
-    if (tete == NULL)
+    if (head == NULL)
     {
-        tete = *item;
+        head = *item;
         return;
     }
-    temp = tete;
+    temp = head;
     while (temp->next != NULL)
         temp = temp->next;
 
