@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
  */
 stack_t *cre_ate_nod_mo(int x)
 {
-	stack_t *case;
+	stack_t *case = NULL;
 
-	case = malloc(sizeof(stack_t));
+	case = (stack_t *)malloc(sizeof(stack_t));
 	if (case == NULL)
 		er_r_mo(16);
 	case->next = NULL;
