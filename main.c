@@ -31,9 +31,11 @@ stack_t *cre_ate_nod_mo(int n)
 
     case = malloc(sizeof(stack_t));
     if (case == NULL)
-        er_r_mo(4);
+        er_r_mo(16);
     case->next = NULL;
+
     case->prev = NULL;
+
     case->n = x;
     return (case);
 }
@@ -43,16 +45,16 @@ stack_t *cre_ate_nod_mo(int n)
  */
 void fre_e_nod_mo()
 {
-    stack_t *temp;
+    stack_t *p;
 
     if (tete == NULL)
         return;
 
     while (tete != NULL)
     {
-        temp = tete;
+        p = tete;
         tete = tete->next;
-        free(temp);
+        free(p);
     }
 }
 
