@@ -9,7 +9,7 @@
 void pri_nt_to_mo(stack_t **pile, unsigned int n_ln)
 {
     if (*pile == NULL || pile == NULL)
-        mor_e_er_mo(6, n_ln);
+        mor_e_er_mo(20, n_ln);
 
     printf("%d\n", (*pile)->n);
 }
@@ -70,7 +70,7 @@ void pop_to_mo(stack_t **pile, unsigned int n_ln)
     stack_t *p;
 
     if (pile == NULL || *pile == NULL)
-        mor_e_er_mo(7, n_ln);
+        mor_e_er_mo(21, n_ln);
 
     p = *pile;
     *pile = p->next;
