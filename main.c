@@ -18,7 +18,8 @@ int main(int argc, char *argv[])
 	}
 	fi_lle_op_mo(argv[1]);
 	fre_e_nod_mo();
-	return 0;
+
+	return (0);
 }
 
 /**
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
  * @x: Value to be stored in the node.
  * Return: If successful, a pointer to the node; otherwise, NULL.
  */
-stack_t *cre_ate_nod_mo(int n)
+stack_t *cre_ate_nod_mo(int x)
 {
 	stack_t *case;
 
@@ -44,7 +45,7 @@ stack_t *cre_ate_nod_mo(int n)
 /**
  * fre_e_nod_mo -  Deallocates nodes within the stack.
  */
-void fre_e_nod_mo()
+void fre_e_nod_mo(void)
 {
 	stack_t *p;
 
@@ -68,7 +69,7 @@ void add_to_qu_mo(stack_t **item, __attribute__((unused)) unsigned int val_ln)
 {
 	stack_t *temp;
 
-	if (*item == NULL|| item == NULL)
+	if (*item == NULL || item == NULL)
 		exit(EXIT_FAILURE);
 	if (head == NULL)
 	{
