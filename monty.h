@@ -78,9 +78,9 @@ void pri_nt_st_mo(stack_t **, unsigned int);   /* old: print_str -> new: pri_nt_
 void rot_l_mo(stack_t **, unsigned int);       /* old: rotl -> new: rot_l_mo*/
 
 /*Error hanlding*/
-void er_r_mo(int error_code, ...);     /* old: err -> new: er_r_mo*/
-void mor_e_er_mo(int error_code, ...); /* old: more_err -> new: mor_e_er_mo*/
-void str_ing_er_mo(int error_code, ...);   /* old: string_err -> new: str_ing_er_mo*/
+void er_r_mo(int incorect, ...);     /* old: err -> new: er_r_mo*/
+void mor_e_er_mo(int incorect, ...); /* old: more_err -> new: mor_e_er_mo*/
+void str_ing_er_mo(int incorect, ...);   /* old: string_err -> new: str_ing_er_mo*/
 void rot_r_mo(stack_t **, unsigned int);   /* old: rotr -> new: rot_r_mo*/
 
 #endif
