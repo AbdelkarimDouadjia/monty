@@ -8,10 +8,10 @@
  */
 void pri_nt_to_mo(stack_t **pile, unsigned int n_ln)
 {
-    if (*pile == NULL || pile == NULL)
-        mor_e_er_mo(20, n_ln);
+	if (*pile == NULL || pile == NULL)
+		mor_e_er_mo(20, n_ln);
 
-    printf("%d\n", (*pile)->n);
+	printf("%d\n", (*pile)->n);
 }
 
 /**
@@ -21,18 +21,18 @@ void pri_nt_to_mo(stack_t **pile, unsigned int n_ln)
  */
 void pri_nt_st_mo(stack_t **pile, unsigned int n_ln)
 {
-    stack_t *p;
-    (void)n_ln;
+	stack_t *p;
+	(void)n_ln;
 
-    if (pile == NULL)
-        exit(EXIT_FAILURE);
+	if (pile == NULL)
+		exit(EXIT_FAILURE);
 
-    p = *pile;
-    while (p != NULL)
-    {
-        printf("%d\n", p->n);
-        p = p->next;
-    }
+	p = *pile;
+	while (p != NULL)
+	{
+		printf("%d\n", p->n);
+		p = p->next;
+	}
 }
 
 /**
@@ -42,22 +42,22 @@ void pri_nt_st_mo(stack_t **pile, unsigned int n_ln)
  */
 void add_to_st_mo(stack_t **Nouv, __attribute__((unused)) unsigned int n_ln)
 {
-    stack_t *p;
+	stack_t *p;
 
-    if (*Nouv == NULL || Nouv == NULL)
-        exit(EXIT_FAILURE);
+	if (*Nouv == NULL || Nouv == NULL)
+		exit(EXIT_FAILURE);
 
-    if (head == NULL)
-    {
-        head = *Nouv;
-        return;
-    }
-    p = head;
+	if (head == NULL)
+	{
+		head = *Nouv;
+		return;
+	}
+	p = head;
 
-    head = *Nouv;
-    head->next = p;
+	head = *Nouv;
+	head->next = p;
 
-    p->prev = head;
+	p->prev = head;
 }
 
 /**
@@ -67,16 +67,16 @@ void add_to_st_mo(stack_t **Nouv, __attribute__((unused)) unsigned int n_ln)
  */
 void pop_to_mo(stack_t **pile, unsigned int n_ln)
 {
-    stack_t *p;
+	stack_t *p;
 
-    if (pile == NULL || *pile == NULL)
-        mor_e_er_mo(21, n_ln);
+	if (pile == NULL || *pile == NULL)
+		mor_e_er_mo(21, n_ln);
 
-    p = *pile;
-    *pile = p->next;
+	p = *pile;
+	*pile = p->next;
 
-    if (*pile != NULL)
-        (*pile)->prev = NULL;
+	if (*pile != NULL)
+		(*pile)->prev = NULL;
 
-    free(p);
+	free(p);
 }
