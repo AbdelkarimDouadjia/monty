@@ -1,6 +1,5 @@
 #include "monty.h"
 
-stack_t *head = NULL;
 
 /**
  * main -  starting point
@@ -47,6 +46,7 @@ stack_t *cre_ate_nod_mo(int x)
  */
 void fre_e_nod_mo(void)
 {
+	stack_t *head = NULL;
 	stack_t *p;
 
 	if (head == NULL)
@@ -67,6 +67,7 @@ void fre_e_nod_mo(void)
  */
 void add_to_qu_mo(stack_t **item, __attribute__((unused)) unsigned int val_ln)
 {
+	stack_t *head = NULL;
 	stack_t *temp;
 
 	if (*item == NULL || item == NULL)
