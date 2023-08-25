@@ -2,7 +2,7 @@
 
 /**
  * fi_lle_op_mo - triggers the process of opening a file
- * @file_name: the file namepath to be accessed
+ * @nm_fl: the file namepath to be accessed
  * Return: None
  */
 
@@ -20,7 +20,7 @@ void fi_lle_op_mo(char *nm_fl)
 
 /**
  * fi_lle_op_mo - retrieves data from a file
- * @fd:  pointer referring to the file descriptor
+ * @opr:  pointer referring to the file descriptor
  * Return: Nothing
  */
 
