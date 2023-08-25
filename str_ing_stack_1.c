@@ -48,7 +48,7 @@ void pri_nt_st_mo(stack_t **pill, __attribute__((unused)) unsigned int ln_numb)
 
 /**
  * rot_l_mo -  Moves the initial stack node to the end through rotation.
- * @stack: Double pointer referencing the stack's uppermost node.
+ * @pill: Double pointer referencing the stack's uppermost node.
  * @l_n_numb: Integer denoting the opcode's line number.
  */
 void rot_l_mo(stack_t **pill, __attribute__((unused)) unsigned int l_n_numb)
