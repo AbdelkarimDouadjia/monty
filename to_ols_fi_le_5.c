@@ -50,24 +50,24 @@ void fi_lle_op_mo(FILE *opr)
 
 int par_se_ln_mo(char *bfs, int nm_l_ine, int frt)
 {
-    char *o_pc, *val_l;
-    const char *ed = "\n ";
+	char *o_pc, *val_l;
+	const char *ed = "\n ";
 
-    if (bfs == 0)
-        er_r_mo(16);
+	if (bfs == 0)
+		er_r_mo(16);
 
-    o_pc = strtok(bfs, ed);
-    if (o_pc == 0)
-        return (frt);
-    val_l = strtok(0, ed);
+	o_pc = strtok(bfs, ed);
+	if (o_pc == 0)
+		return (frt);
+	val_l = strtok(0, ed);
 
-    if (strcmp(o_pc, "stack") == 0)
-        return (0);
-    if (strcmp(o_pc, "queue") == 0)
-        return (1);
+	if (strcmp(o_pc, "stack") == 0)
+		return (0);
+	if (strcmp(o_pc, "queue") == 0)
+		return (1);
 
-    fin_d_fu_mo(o_pc, val_l, nm_l_ine, frt);
-    return (frt);
+	fin_d_fu_mo(o_pc, val_l, nm_l_ine, frt);
+	return (frt);
 }
 
 /**
@@ -81,40 +81,40 @@ int par_se_ln_mo(char *bfs, int nm_l_ine, int frt)
  */
 void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
 {
-    int itera;
-    int glf;
+	int itera;
+	int glf;
 
-    instruction_t fn_ls[] = {
-        {"push", add_to_st_mo},
-        {"pall", pri_nt_st_mo},
-        {"pint", pri_nt_to_mo},
-        {"pop", pop_to_mo},
-        {"nop", no_p_mo},
-        {"swap", swa_p_no_mo},
-        {"add", add_nod_mo},
-        {"sub", sub_nod_mo},
-        {"div", div_nod_mo},
-        {"mul", mul_nodes},
-        {"mod", mul_nod_mo},
-        {"pchar", print_char},
-        {"pstr", pri_nt_ch_mo},
-        {"rotl", rot_l_mo},
-        {"rotr", rot_r_mo},
-        {0, 0}};
+	instruction_t fn_ls[] = {
+		{"push", add_to_st_mo},
+		{"pall", pri_nt_st_mo},
+		{"pint", pri_nt_to_mo},
+		{"pop", pop_to_mo},
+		{"nop", no_p_mo},
+		{"swap", swa_p_no_mo},
+		{"add", add_nod_mo},
+		{"sub", sub_nod_mo},
+		{"div", div_nod_mo},
+		{"mul", mul_nodes},
+		{"mod", mul_nod_mo},
+		{"pchar", print_char},
+		{"pstr", pri_nt_ch_mo},
+		{"rotl", rot_l_mo},
+		{"rotr", rot_r_mo},
+		{0, 0}};
 
-    if (cd_op[0] == '#')
-        return;
+	if (cd_op[0] == '#')
+		return;
 
-    for (glf = 1, itera = 0; fn_ls[itera].cd_op != 0; itera++)
-    {
-        if (strcmp(cd_op, fn_ls[itera].cd_op) == 0)
-        {
-            cal_l_fu_mo(fn_ls[itera].f, cd_op, vla, count_ln, frt);
-            glf = 0;
-        }
-    }
-    if (glf == 1)
-        er_r_mo(17, count_ln, cd_op);
+	for (glf = 1, itera = 0; fn_ls[itera].cd_op != 0; itera++)
+	{
+		if (strcmp(cd_op, fn_ls[itera].cd_op) == 0)
+		{
+			cal_l_fu_mo(fn_ls[itera].f, cd_op, vla, count_ln, frt);
+			glf = 0;
+		}
+	}
+	if (glf == 1)
+		er_r_mo(17, count_ln, cd_op);
 }
 
 /**
@@ -128,31 +128,31 @@ void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
  */
 void cal_l_fu_mo(mn_op_fn functi_n, char *cp_op, char *vla, int nl, int style)
 {
-    stack_t *nde;
-    int gfl;
-    int iter;
+	stack_t *nde;
+	int gfl;
+	int iter;
 
-    gfl = 1;
-    if (strcmp(cp_op, "push") == 0)
-    {
-        if (vla != NULL && vla[0] == '-')
-        {
-            vla = vla + 1;
-            gfl = -1;
-        }
-        if (vla == NULL)
-            er_r_mo(15, nl);
-        for (iter = 0; vla[iter] != '\0'; iter++)
-        {
-            if (isdigit(vla[iter]) == 0)
-                er_r_mo(15, nl);
-        }
-        nde = cre_ate_nod_mo(atoi(vla) * gfl);
-        if (style == 0)
-            functi_n(&nde, nl);
-        if (style == 1)
-            add_to_qu_mo(&nde, nl);
-    }
-    else
-        functi_n(&head, nl);
+	gfl = 1;
+	if (strcmp(cp_op, "push") == 0)
+	{
+		if (vla != NULL && vla[0] == '-')
+		{
+			vla = vla + 1;
+			gfl = -1;
+		}
+		if (vla == NULL)
+			er_r_mo(15, nl);
+		for (iter = 0; vla[iter] != '\0'; iter++)
+		{
+			if (isdigit(vla[iter]) == 0)
+				er_r_mo(15, nl);
+		}
+		nde = cre_ate_nod_mo(atoi(vla) * gfl);
+		if (style == 0)
+			functi_n(&nde, nl);
+		if (style == 1)
+			add_to_qu_mo(&nde, nl);
+	}
+	else
+		functi_n(&head, nl);
 }
