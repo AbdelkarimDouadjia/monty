@@ -7,15 +7,15 @@
  */
 void pri_nt_ch_mo(stack_t **pill, unsigned int numb_lin)
 {
-    int g;
+	int g;
 
-    if (pill == NULL || *pill == NULL)
-        str_ing_er_mo(24, numb_lin);
+	if (pill == NULL || *pill == NULL)
+		str_ing_er_mo(24, numb_lin);
 
-    g = (*pill)->n;
-    if (g > 127 || g <= 0)
-        str_ing_er_mo(25, numb_lin);
-    printf("%c\n", g);
+	g = (*pill)->n;
+	if (g > 127 || g <= 0)
+		str_ing_er_mo(25, numb_lin);
+	printf("%c\n", g);
 }
 
 /**
@@ -25,25 +25,25 @@ void pri_nt_ch_mo(stack_t **pill, unsigned int numb_lin)
  */
 void pri_nt_st_mo(stack_t **pill, __attribute__((unused)) unsigned int ln_numb)
 {
-    int g;
-    stack_t *temp;
+	int g;
+	stack_t *temp;
 
-    if (pill == NULL || *pill == NULL)
-    {
-        printf("\n");
-        return;
-    }
+	if (pill == NULL || *pill == NULL)
+	{
+		printf("\n");
+		return;
+	}
 
-    temp = *pill;
-    while (temp != NULL)
-    {
-        g = temp->n;
-        if (g > 127 || g <= 0)
-            break;
-        printf("%c", g);
-        temp = temp->next;
-    }
-    printf("\n");
+	temp = *pill;
+	while (temp != NULL)
+	{
+		g = temp->n;
+		if (g > 127 || g <= 0)
+			break;
+		printf("%c", g);
+		temp = temp->next;
+	}
+	printf("\n");
 }
 
 /**
@@ -53,20 +53,22 @@ void pri_nt_st_mo(stack_t **pill, __attribute__((unused)) unsigned int ln_numb)
  */
 void rot_l_mo(stack_t **pill, __attribute__((unused)) unsigned int l_n_numb)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if (pill == NULL || *pill == NULL || (*pill)->next == NULL)
-        return;
+	if (pill == NULL || *pill == NULL || (*pill)->next == NULL)
+		return;
 
-    temp = *pill;
-    while (temp->next != NULL)
-        temp = temp->next;
+	temp = *pill;
+	while (temp->next != NULL)
+		temp = temp->next;
 
-    temp->next = *pill;
-    (*pill)->prev = temp;
-    *pill = (*pill)->next;
-    (*pill)->prev->next = NULL;
-    (*pill)->prev = NULL;
+	temp->next = *pill;
+	(*pill)->prev = temp;
+	*pill = (*pill)->next;
+
+	(*pill)->prev->next = NULL;
+
+	(*pill)->prev = NULL;
 }
 
 /**
@@ -76,19 +78,21 @@ void rot_l_mo(stack_t **pill, __attribute__((unused)) unsigned int l_n_numb)
  */
 void rot_r_mo(stack_t **pile, __attribute__((unused)) unsigned int l_n_numb)
 {
-    stack_t *temp;
+	stack_t *temp;
 
-    if ((*pile)->next == NULL || *pile == NULL || pile == NULL)
-        return;
+	if ((*pile)->next == NULL || *pile == NULL || pile == NULL)
+		return;
 
-    temp = *pile;
+	temp = *pile;
 
-    while (temp->next != NULL)
-        temp = temp->next;
+	while (temp->next != NULL)
+		temp = temp->next;
 
-    temp->next = *pile;
-    temp->prev->next = NULL;
-    temp->prev = NULL;
-    (*pile)->prev = temp;
-    (*pile) = temp;
+	temp->next = *pile;
+	temp->prev->next = NULL;
+
+	temp->prev = NULL;
+
+	(*pile)->prev = temp;
+	(*pile) = temp;
 }
