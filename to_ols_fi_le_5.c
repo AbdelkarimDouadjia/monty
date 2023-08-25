@@ -106,9 +106,9 @@ void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
 	if (cd_op[0] == '#')
 		return;
 
-	for (glf = 1, itera = 0; fn_ls[itera].cd_op != 0; itera++)
+	for (glf = 1, itera = 0; fn_ls[itera].opcode != 0; itera++)
 	{
-		if (strcmp(cd_op, fn_ls[itera].cd_op) == 0)
+		if (strcmp(cd_op, fn_ls[itera].opcode) == 0)
 		{
 			cal_l_fu_mo(fn_ls[itera].f, cd_op, vla, count_ln, frt);
 			glf = 0;
