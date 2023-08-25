@@ -1,83 +1,81 @@
 #include "monty.h"
-stack_t *head = NULL;
+stack_t *tete = NULL;
 
 /**
- * main - entry point
- * @argc: arguments count
- * @argv: list of arguments
- * Return: always 0
+ * main -  starting point
+ * @argc: count of parameteres
+ * @argv: list or number of parameters
+ * Return: gives us 0 all the time
  */
 
 int main(int argc, char *argv[])
 {
-	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	open_file(argv[1]);
-	free_nodes();
-	return (0);
+    if (argc != 2)
+    {
+        fprintf(stderr, "USAGE: monty file\n");
+        exit(EXIT_FAILURE);
+    }
+    fi_lle_op_mo(argv[1]);
+    fre_e_nod_mo();
+    return 0;
 }
 
 /**
- * create_node - Creates a node.
- * @n: Number to go inside the node.
- * Return: Upon sucess a pointer to the node. Otherwise NULL.
+ * cre_ate_nod_mo - Generates a new case.
+ * @x: Value to be stored in the node.
+ * Return: If successful, a pointer to the node; otherwise, NULL.
  */
-stack_t *create_node(int n)
+stack_t *cre_ate_nod_mo(int n)
 {
-	stack_t *node;
+    stack_t *case;
 
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-		err(4);
-	node->next = NULL;
-	node->prev = NULL;
-	node->n = n;
-	return (node);
+    case = malloc(sizeof(stack_t));
+    if (case == NULL)
+        er_r_mo(4);
+    case->next = NULL;
+    case->prev = NULL;
+    case->n = x;
+    return (case);
 }
 
 /**
- * free_nodes - Frees nodes in the stack.
+ * fre_e_nod_mo -  Deallocates nodes within the stack.
  */
-void free_nodes(void)
+void fre_e_nod_mo()
 {
-	stack_t *tmp;
+    stack_t *temp;
 
-	if (head == NULL)
-		return;
+    if (tete == NULL)
+        return;
 
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free(tmp);
-	}
+    while (tete != NULL)
+    {
+        temp = tete;
+        tete = tete->next;
+        free(temp);
+    }
 }
 
-
 /**
- * add_to_queue - Adds a node to the queue.
- * @new_node: Pointer to the new node.
- * @ln: line number of the opcode.
+ * add_to_qu_mo - Inserts a node into the queue.
+ * @item:  new item case pointer.
+ * @val_ln: Line number associated with the opcode.
  */
-void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
+void add_to_qu_mo(stack_t **item, __attribute__((unused)) unsigned int val_ln)
 {
-	stack_t *tmp;
+    stack_t *temp;
 
-	if (new_node == NULL || *new_node == NULL)
-		exit(EXIT_FAILURE);
-	if (head == NULL)
-	{
-		head = *new_node;
-		return;
-	}
-	tmp = head;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
+    if (*item == NULL|| item == NULL)
+        exit(EXIT_FAILURE);
+    if (tete == NULL)
+    {
+        tete = *item;
+        return;
+    }
+    temp = tete;
+    while (temp->next != NULL)
+        temp = temp->next;
 
-	tmp->next = *new_node;
-	(*new_node)->prev = tmp;
-
+    temp->next = *item;
+    (*item)->prev = temp;
 }
