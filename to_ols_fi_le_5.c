@@ -11,7 +11,7 @@ void fi_lle_op_mo(char *nm_fl)
 	FILE *op = fopen(nm_fl, "r");
 
 	if (nm_fl == NULL || op == NULL)
-		err(2, nm_fl);
+		er_r_mo(18, nm_fl);
 
 	rea_d_fi_mo(op);
 	fclose(op);
@@ -54,7 +54,7 @@ int par_se_ln_mo(char *bfs, int nm_l_ine, int frt)
     const char *ed = "\n ";
 
     if (bfs == 0)
-        err(4);
+        er_r_mo(16);
 
     o_pc = strtok(bfs, ed);
     if (o_pc == 0)
@@ -114,7 +114,7 @@ void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
         }
     }
     if (glf == 1)
-        err(3, count_ln, cd_op);
+        er_r_mo(17, count_ln, cd_op);
 }
 
 /**
@@ -141,11 +141,11 @@ void cal_l_fu_mo(mn_op_fn functi_n, char *cp_op, char *vla, int nl, int style)
             gfl = -1;
         }
         if (vla == NULL)
-            er_r_mo(5, nl);
+            er_r_mo(15, nl);
         for (iter = 0; vla[iter] != '\0'; iter++)
         {
             if (isdigit(vla[iter]) == 0)
-                er_r_mo(5, nl);
+                er_r_mo(15, nl);
         }
         nde = cre_ate_nod_mo(atoi(vla) * gfl);
         if (style == 0)
