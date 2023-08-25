@@ -92,18 +92,18 @@ void mor_e_er_mo(int incorect, ...)
  * (25) => The nbr within a node falls outside ascii constraints code.
  * (24) ~> The stack is empty.
  */
-void str_ing_er_mo(int incorrect, ...)
+void str_ing_er_mo(int incorect, ...)
 {
     va_list k;
     int nu_mbr_lnde;
 
-    va_start(k, incorrect);
+    va_start(k, incorect);
     nu_mbr_lnde = va_arg(k, int);
-    if (incorrect == 24)
+    if (incorect == 24)
     { // case 11
         fprintf(stderr, "L%d: can't pchar, stack empty\n", nu_mbr_lnde);
     }
-    else if (incorrect == 25)
+    else if (incorect == 25)
     { // case 10
         fprintf(stderr, "L%d: can't pchar, value out of range\n", nu_mbr_lnde);
     }
