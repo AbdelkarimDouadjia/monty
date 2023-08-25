@@ -1,116 +1,112 @@
 #include "monty.h"
 
 /**
- * err - Prints appropiate error messages determined by their error code.
- * @error_code: The error codes are the following:
- * (1) => The user does not give any file or more than one file to the program.
- * (2) => The file provided is not a file that can be opened or read.
- * (3) => The file provided contains an invalid instruction.
- * (4) => When the program is unable to malloc more memory.
- * (5) => When the parameter passed to the instruction "push" is not an int.
- * (6) => When the stack it empty for pint.
- * (7) => When the stack it empty for pop.
- * (8) => When stack is too short for operation.
+ * er_r_mo - Conveys specific error messages based on distinct error codes.
+ * @incorect: Error codes and their corresponding descriptions:
+ * (15) ~> The number inside a node is outside ASCII bounds.
+ * (19) ~>The provided file cannot be opened or read.
+ * (16) ~> The file contains an invalid instruction.
+ * (18) ~>  Insufficient memory available for further allocation.
+ * (17) ~> The parameter passed to the "push" instruction is not an integer.
  */
-void err(int error_code, ...)
+void er_r_mo(int incorect, ...)
 {
-	va_list ag;
-	char *op;
-	int l_num;
+    char *ch;
+    int nu_mbr_lnde;
+    va_list k;
 
-	va_start(ag, error_code);
-	switch (error_code)
-	{
-		case 1:
-			fprintf(stderr, "USAGE: monty file\n");
-			break;
-		case 2:
-			fprintf(stderr, "Error: Can't open file %s\n",
-				va_arg(ag, char *));
-			break;
-		case 3:
-			l_num = va_arg(ag, int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
-			break;
-		case 4:
-			fprintf(stderr, "Error: malloc failed\n");
-			break;
-		case 5:
-			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
-			break;
-		default:
-			break;
-	}
-	free_nodes();
-	exit(EXIT_FAILURE);
+    va_start(k, incorect);
+    if (incorect == 15)
+    { // case 5
+        fprintf(stderr, "L%d: usage: push integer\n", va_arg(k, int));
+    }
+    else if (incorect == 19)
+    { // case 1
+        fprintf(stderr, "USAGE: monty file\n");
+    }
+    else if (incorect == 16)
+    { // case 4
+        fprintf(stderr, "Error: malloc failed\n");
+    }
+    else if (incorect == 18)
+    { // case 2
+        fprintf(stderr, "Error: Can't open file %s\n",
+                va_arg(k, char *));
+    }
+    else if (incorect == 17)
+    { // case 3
+        nu_mbr_lnde = va_arg(k, int);
+        ch = va_arg(k, char *);
+        fprintf(stderr, "L%d: unknown instruction %s\n", nu_mbr_lnde, ch);
+    }
+    fre_e_nod_mo();
+    exit(EXIT_FAILURE);
 }
 
 /**
- * more_err - handles errors.
- * @error_code: The error codes are the following:
- * (6) => When the stack it empty for pint.
- * (7) => When the stack it empty for pop.
- * (8) => When stack is too short for operation.
- * (9) => Division by zero.
+ * mor_e_er_mo - Manages various error scenarios.
+ * @error_code:  Error codes and their corresponding situations:
+ * (20) ~> Empty stack encountered during "pint" instruction.
+ * (21) ~> Empty stack encountered during "pop" instruction.
+ * (22) ~> Stack size insufficient for the intended operation.
+ * (23) ~> it will div by the 0 num.
  */
-void more_err(int error_code, ...)
+void mor_e_er_mo(int incorect, ...)
 {
-	va_list ag;
-	char *op;
-	int l_num;
+    va_list k;
+    char *ch;
+    int nu_mbr_lnde;
 
-	va_start(ag, error_code);
-	switch (error_code)
-	{
-		case 6:
-			fprintf(stderr, "L%d: can't pint, stack empty\n",
-				va_arg(ag, int));
-			break;
-		case 7:
-			fprintf(stderr, "L%d: can't pop an empty stack\n",
-				va_arg(ag, int));
-			break;
-		case 8:
-			l_num = va_arg(ag, unsigned int);
-			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
-			break;
-		case 9:
-			fprintf(stderr, "L%d: division by zero\n",
-				va_arg(ag, unsigned int));
-			break;
-		default:
-			break;
-	}
-	free_nodes();
-	exit(EXIT_FAILURE);
+    va_start(k, incorect);
+
+    if (incorect == 22)
+    { // case 8
+        nu_mbr_lnde = va_arg(k, unsigned int);
+        ch = va_arg(k, char *);
+        fprintf(stderr, "L%d: can't %s, stack too short\n", nu_mbr_lnde, ch);
+    }
+    else if (incorect == 23)
+    { // case 9
+        fprintf(stderr, "L%d: division by zero\n",
+                va_arg(k, unsigned int));
+    }
+    else if (incorect == 20)
+    { // case 6
+        fprintf(stderr, "L%d: can't pchar, stack empty\n",
+                va_arg(k, int));
+    }
+    else if (incorect == 21)
+    { // case 7
+        fprintf(stderr, "L%d: can't pop an empty stack\n",
+                va_arg(k, int));
+    }
+
+    fre_e_nod_mo();
+    exit(EXIT_FAILURE);
 }
 
 /**
- * string_err - handles errors.
- * @error_code: The error codes are the following:
- * (10) ~> The number inside a node is outside ASCII bounds.
- * (11) ~> The stack is empty.
+ * str_ing_er_mo -  Addresses error situations.
+ *
+ * @incorrect:  Corresponding error codes and their descriptions:
+ * (25) => The nbr within a node falls outside ascii constraints code.
+ * (24) ~> The stack is empty.
  */
-void string_err(int error_code, ...)
+void str_ing_er_mo(int incorrect, ...)
 {
-	va_list ag;
-	int l_num;
+    va_list k;
+    int nu_mbr_lnde;
 
-	va_start(ag, error_code);
-	l_num = va_arg(ag, int);
-	switch (error_code)
-	{
-		case 10:
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
-			break;
-		case 11:
-			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
-			break;
-		default:
-			break;
-	}
-	free_nodes();
-	exit(EXIT_FAILURE);
+    va_start(k, incorrect);
+    nu_mbr_lnde = va_arg(k, int);
+    if (incorrect == 24)
+    { // case 11
+        fprintf(stderr, "L%d: can't pchar, stack empty\n", nu_mbr_lnde);
+    }
+    else if (incorrect == 25)
+    { // case 10
+        fprintf(stderr, "L%d: can't pchar, value out of range\n", nu_mbr_lnde);
+    }
+    fre_e_nod_mo();
+    exit(EXIT_FAILURE);
 }
