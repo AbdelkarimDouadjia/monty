@@ -26,7 +26,7 @@ void fi_lle_op_mo(char *nm_fl)
 
 void fi_lle_op_mo(FILE *opr)
 {
-	int  nm_l_ine,, fo_r_ma = 0;
+	int  nm_l_ine, fo_r_ma = 0;
 	char *bfs = NULL;
 	size_t len_g = 0;
 
@@ -100,7 +100,8 @@ void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
 		{"pstr", pri_nt_ch_mo},
 		{"rotl", rot_l_mo},
 		{"rotr", rot_r_mo},
-		{0, 0}};
+		{0, 0}
+};
 
 	if (cd_op[0] == '#')
 		return;
