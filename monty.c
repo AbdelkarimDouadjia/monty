@@ -28,16 +28,16 @@ int main(int argc, char *argv[])
  */
 stack_t *cre_ate_nod_mo(int x)
 {
-	stack_t *case = NULL;
+	stack_t *nd = NULL;
 
-	case = (stack_t *)malloc(sizeof(stack_t));
-	if (case == NULL)
+	nd = (stack_t *)malloc(sizeof(stack_t));
+	if (nd == NULL)
 		er_r_mo(16);
-	case->next = NULL;
+	nd->next = NULL;
 
-	case->prev = NULL;
+	nd->prev = NULL;
 
-	case->n = x;
+	nd->n = x;
 	return (case);
 }
 
