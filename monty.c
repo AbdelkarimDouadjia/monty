@@ -38,7 +38,7 @@ stack_t *cre_ate_nod_mo(int x)
 	nd->prev = NULL;
 
 	nd->n = x;
-	return (case);
+	return (nd);
 }
 
 /**
