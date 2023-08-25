@@ -19,12 +19,12 @@ void fi_lle_op_mo(char *nm_fl)
 
 
 /**
- * fi_lle_op_mo - retrieves data from a file
+ * rea_d_fi_mo - retrieves data from a file
  * @opr:  pointer referring to the file descriptor
  * Return: Nothing
  */
 
-void fi_lle_op_mo(FILE *opr)
+void rea_d_fi_mo(FILE *opr)
 {
 	int  nm_l_ine, fo_r_ma = 0;
 	char *bfs = NULL;
