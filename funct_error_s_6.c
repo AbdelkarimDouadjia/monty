@@ -52,36 +52,33 @@ void er_r_mo(int incorect, ...)
  */
 void mor_e_er_mo(int incorect, ...)
 {
-    va_list k;
-    char *ch;
-    int nu_mbr_lnde;
+	va_list k;
+	char *ch;
+	int nu_mbr_lnde;
 
-    va_start(k, incorect);
+	va_start(k, incorect);
 
-    if (incorect == 22)
-    {
-        nu_mbr_lnde = va_arg(k, unsigned int);
-        ch = va_arg(k, char *);
-        fprintf(stderr, "L%d: can't %s, stack too short\n", nu_mbr_lnde, ch);
-    }
-    else if (incorect == 23)
-    {
-        fprintf(stderr, "L%d: division by zero\n",
-                va_arg(k, unsigned int));
-    }
-    else if (incorect == 20)
-    {
-        fprintf(stderr, "L%d: can't pchar, stack empty\n",
-                va_arg(k, int));
-    }
-    else if (incorect == 21)
-    {
-        fprintf(stderr, "L%d: can't pop an empty stack\n",
-                va_arg(k, int));
-    }
+	if (incorect == 22)
+	{
+		nu_mbr_lnde = va_arg(k, unsigned int);
+		ch = va_arg(k, char *);
+		fprintf(stderr, "L%d: can't %s, stack too short\n", nu_mbr_lnde, ch);
+	}
+	else if (incorect == 23)
+	{
+		fprintf(stderr, "L%d: division by zero\n",va_arg(k, unsigned int));
+	}
+	else if (incorect == 20)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", va_arg(k, int));
+	}
+	else if (incorect == 21)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(k, int));
+	}
 
-    fre_e_nod_mo();
-    exit(EXIT_FAILURE);
+	fre_e_nod_mo();
+	exit(EXIT_FAILURE);
 }
 
 /**
@@ -93,19 +90,19 @@ void mor_e_er_mo(int incorect, ...)
  */
 void str_ing_er_mo(int incorect, ...)
 {
-    va_list k;
-    int nu_mbr_lnde;
+	va_list k;
+	int nu_mbr_lnde;
 
-    va_start(k, incorect);
-    nu_mbr_lnde = va_arg(k, int);
-    if (incorect == 24)
-    {
-        fprintf(stderr, "L%d: can't pchar, stack empty\n", nu_mbr_lnde);
-    }
-    else if (incorect == 25)
-    {
-        fprintf(stderr, "L%d: can't pchar, value out of range\n", nu_mbr_lnde);
-    }
-    fre_e_nod_mo();
-    exit(EXIT_FAILURE);
+	va_start(k, incorect);
+	nu_mbr_lnde = va_arg(k, int);
+	if (incorect == 24)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", nu_mbr_lnde);
+	}
+	else if (incorect == 25)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", nu_mbr_lnde);
+	}
+	fre_e_nod_mo();
+	exit(EXIT_FAILURE);
 }
