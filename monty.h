@@ -41,8 +41,8 @@ typedef struct instruction_s
 
 /* End :Do not edit them */
 
-extern stack_t *head;
 typedef void (*mn_op_fn)(stack_t **, unsigned int);
+extern stack_t *head;
 
 /*file operations*/
 void fi_lle_op_mo(char *nm_fl);                           /* old: open_file -> new: fi_lle_op_mo / argument= old: file_name -> nm_fl*/ /**/
