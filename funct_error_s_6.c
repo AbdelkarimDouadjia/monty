@@ -44,7 +44,7 @@ void er_r_mo(int incorect, ...)
 
 /**
  * mor_e_er_mo - Manages various error scenarios.
- * @error_code:  Error codes and their corresponding situations:
+ * @incorect:  Error codes and their corresponding situations:
  * (20) ~> Empty stack encountered during "pint" instruction.
  * (21) ~> Empty stack encountered during "pop" instruction.
  * (22) ~> Stack size insufficient for the intended operation.
@@ -66,7 +66,7 @@ void mor_e_er_mo(int incorect, ...)
 	}
 	else if (incorect == 23)
 	{
-		fprintf(stderr, "L%d: division by zero\n",va_arg(k, unsigned int));
+		fprintf(stderr, "L%d: division by zero\n", va_arg(k, unsigned int));
 	}
 	else if (incorect == 20)
 	{
@@ -84,7 +84,7 @@ void mor_e_er_mo(int incorect, ...)
 /**
  * str_ing_er_mo -  Addresses error situations.
  *
- * @incorrect:  Corresponding error codes and their descriptions:
+ * @incorect:  Corresponding error codes and their descriptions:
  * (25) => The nbr within a node falls outside ascii constraints code.
  * (24) ~> The stack is empty.
  */
