@@ -10,11 +10,11 @@ void pri_nt_ch_mo(stack_t **pill, unsigned int numb_lin)
     int g;
 
     if (pill == NULL || *pill == NULL)
-        str_ing_er_mo(11, numb_lin);
+        str_ing_er_mo(24, numb_lin);
 
     g = (*pill)->n;
     if (g > 127 || g <= 0)
-        str_ing_er_mo(10, numb_lin);
+        str_ing_er_mo(25, numb_lin);
     printf("%c\n", g);
 }
 
