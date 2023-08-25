@@ -96,7 +96,7 @@ void fin_d_fu_mo(char *cd_op, char *vla, int count_ln, int frt)
 		{"div", div_nod_mo},
 		{"mul", mul_nod_mo},
 		{"mod", mod_nod_mo},
-		{"pchar", print_char},
+		{"pchar", pri_nt_ch_mo},
 		{"pstr", pri_nt_ch_mo},
 		{"rotl", rot_l_mo},
 		{"rotr", rot_r_mo},
