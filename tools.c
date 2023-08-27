@@ -32,7 +32,6 @@ void read_file(char *file)
 	{
 		opcode = strtok(buffer, " \t\n");
 
-		printf("line: %d\n", line);
 		for (n = 0; funcs[n].opcode != NULL; n++)
 		{
 			if (strcmp(opcode, funcs[n].opcode) == 0)
