@@ -1,70 +1,100 @@
 #include "monty.h"
 /**
- */
-void read_file(char *file)
+ * addnode - add node to the head stack
+ * @stack: head of the stack
+ * @n: new_value
+ * Return: no return
+*/
+void addnode(stack_t **stack, int n)
 {
-	FILE *fp = fopen(file, "r");
-	char buffer[1024];
-	unsigned int line = 1;
-	ssize_t n = 0;
-	int flag;
-	char *opcode;
-	char *item;
 
-	instruction_t funcs[] = {
-		{"push", push},
-		{"pop", pop},
-		{"pall", pall},
-		{"pint", pint},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{NULL, NULL}
-	};
+	stack_t *new_node, *aux;
 
-	if (fp == NULL)
+	aux = *stack;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{ printf("Error\n");
+		exit(0); }
+	if (aux)
+		aux->prev = new_node;
+	new_node->n = n;
+	new_node->next = *stack;
+	new_node->prev = NULL;
+	*stack = new_node;
+}
+/**
+* freemem - frees a doubly linked list
+* @stack: head of the stack
+*/
+void freemem(stack_t *stack)
+{
+	stack_t *aux;
+
+	aux = stack;
+	while (stack)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", file);
-		exit(EXIT_FAILURE);
-	}
-
-	while (fgets(buffer, sizeof(buffer), fp))
-	{
-		opcode = strtok(buffer, " \t\n");
-
-		for (n = 0; funcs[n].opcode != NULL; n++)
-		{
-			if (strcmp(opcode, funcs[n].opcode) == 0)
-			{
-				flag = 0;
-				if (funcs[n].f == push)
-				{
-					item = strtok(NULL, " \t\n");
-					if (item)
-					{
-						funcs[n].f(&top, atoi(item));
-						line++;
-					}
-					else
-					{
-						fprintf(stderr,"L%d: usage: push integer", line);
-						exit(EXIT_FAILURE);
-					}
-				}
-				else
-				{
-					line++;
-					funcs[n].f(&top, line);
-				}
-				break;
-			}
-			else
-				flag = -1;
-		}
-		if (flag == -1)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
-			exit(EXIT_FAILURE);
-		}
+		aux = stack->next;
+		free(stack);
+		stack = aux;
 	}
 }
+/**
+ * queue - prints the top
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
+*/
+void queue(stack_t **stack, unsigned int line_no)
+{
+	(void)stack;
+	(void)line_no;
+	bus.lifi = 1;
+}
+
+/**
+ * addqueue - add node to the tail stack
+ * @n: new_value
+ * @stack: head of the stack
+ * Return: no return
+*/
+void addqueue(stack_t **stack, int n)
+{
+	stack_t *new_node, *aux;
+
+	aux = *stack;
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		printf("Error\n");
+	}
+	new_node->n = n;
+	new_node->next = NULL;
+	if (aux)
+	{
+		while (aux->next)
+			aux = aux->next;
+	}
+	if (!aux)
+	{
+		*stack = new_node;
+		new_node->prev = NULL;
+	}
+	else
+	{
+		aux->next = new_node;
+		new_node->prev = aux;
+	}
+}
+/**
+ * stack - prints the top
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
+*/
+void starck(stack_t **stack, unsigned int line_no)
+{
+	(void)stack;
+	(void)line_no;
+	bus.lifi = 0;
+}
+

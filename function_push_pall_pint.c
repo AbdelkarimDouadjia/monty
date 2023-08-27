@@ -1,70 +1,128 @@
 #include "monty.h"
 /**
+ * push - add node to the stack
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
  */
 void push(stack_t **stack, unsigned int line_no)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
-	(void)line_no;
-	if (new_node == NULL)
-	{
-		fprintf(stderr,"Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
+	int n, j = 0, flag = 0;
 
-	new_node->n = line_no;
-	new_node->prev = NULL;
-	new_node->next = *stack;
-
-	if (*stack)
+	if (bus.arg)
 	{
-		(*stack)->prev = new_node;
-	}
-	*stack = new_node;
+		if (bus.arg[0] == '-')
+			j++;
+		for (; bus.arg[j] != '\0'; j++)
+		{
+			if (bus.arg[j] > 57 || bus.arg[j] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", line_no);
+			fclose(bus.file);
+			free(bus.content);
+			freemem(*stack);
+			exit(EXIT_FAILURE); }}
+	else
+	{ fprintf(stderr, "L%d: usage: push integer\n", line_no);
+		fclose(bus.file);
+		free(bus.content);
+		freemem(*stack);
+		exit(EXIT_FAILURE); }
+	n = atoi(bus.arg);
+	if (bus.lifi == 0)
+		addnode(stack, n);
+	else
+		addqueue(stack, n);
 }
+
 /**
+ * pall - prints the stack
+ * @stack: stack head
+ * @line_no: no used
+ * Return: no return
  */
 void pall(stack_t **stack, unsigned int line_no)
 {
-	stack_t *current = *stack;
+	stack_t *h;
 	(void)line_no;
-	while (current)
+
+	h = *stack;
+	if (h == NULL)
+		return;
+	while (h)
 	{
-		printf("%d\n", current->n);
-		current = current->next;
+		printf("%d\n", h->n);
+		h = h->next;
 	}
 }
 
 /**
+ * pint - prints the top
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
  */
 void pint(stack_t **stack, unsigned int line_no)
 {
-	(void)line_no;
-	if (*stack)
+	if (*stack == NULL)
 	{
-		printf("%d\n", (*stack)->n);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_no);
+		fclose(bus.file);
+		free(bus.content);
+		freemem(*stack);
+		exit(EXIT_FAILURE);
 	}
+	printf("%d\n", (*stack)->n);
+
 }
 
 /**
+ * pop - prints the top
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
  */
 void pop(stack_t **stack, unsigned int line_no)
 {
-	(void)line_no;
-	if (*stack)
-	{
-		stack_t *tmp = *stack;
+	stack_t *h;
 
-		printf("%d\n", tmp->n);
-		*stack = tmp->next;
-		free(tmp);
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_no);
+		fclose(bus.file);
+		free(bus.content);
+		freemem(*stack);
+		exit(EXIT_FAILURE);
 	}
+	h = *stack;
+	*stack = h->next;
+	free(h);
+
 }
 
 /**
+ * swap - adds the top two elements of the stack.
+ * @stack: stack head
+ * @line_no: line_number
+ * Return: no return
  */
 void swap(stack_t **stack, unsigned int line_no)
 {
-	(void)line_no;
+	stack_t *h = *stack;
+	int len = 0;
+
+	while (h)
+	{
+		h = h->next;
+		len++;
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_no);
+		freemem(*stack);
+		exit(EXIT_FAILURE);
+	}
 	if (*stack)
 	{
 		stack_t *tmp;

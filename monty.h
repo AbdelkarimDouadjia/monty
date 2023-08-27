@@ -34,17 +34,35 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * struct bus_s - variables -args, file, line content
+ * @arg: value
+ * @file: pointer to monty file
+ * @content: line content
+ * @lifi: flag change stack <-> queue
+ * Description: carries values through the program
+ */
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
+extern bus_t bus;
+
 typedef void (*op_func)(stack_t **, unsigned int);
-extern stack_t *top;
-void pall(stack_t **stack, unsigned int line_no);
+int execute(char *content, stack_t **stack, unsigned int line_no, FILE *file);
 void push(stack_t **stack, unsigned int line_no);
+void pall(stack_t **stack, unsigned int line_no);
 void pint(stack_t **stack, unsigned int line_no);
 void pop(stack_t **stack, unsigned int line_no);
-void call_function(op_func cmd, char *op, int val, unsigned int line);
 void swap(stack_t **stack, unsigned int line_no);
 void add(stack_t **stack, unsigned int line_no);
 void nop(stack_t **stack, unsigned int line_no);
-void read_file(char *file);
-void find_func(char *command, int line);
-stack_t *create_node(int item);
+void addnode(stack_t **stack, int n);
+void freemem(stack_t *stack);
+void queue(stack_t **stack, unsigned int line_no);
+void addqueue(stack_t **stack, int n);
+void starck(stack_t **stack, unsigned int line_no);
 #endif
