@@ -35,7 +35,6 @@ void push(stack_t **stack, unsigned int line_no)
 	else
 		addqueue(stack, n);
 }
-
 /**
  * pall - prints the stack
  * @stack: stack head
@@ -56,7 +55,6 @@ void pall(stack_t **stack, unsigned int line_no)
 		h = h->next;
 	}
 }
-
 /**
  * pint - prints the top
  * @stack: stack head

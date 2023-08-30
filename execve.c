@@ -17,6 +17,13 @@ int execute(char *content, stack_t **stack, unsigned int line_no, FILE *file)
 				{"nop", nop},
 				{"queue", queue},
 				{"stack", starck},
+				{"pchar", pchar},
+				{"pstr", pstr},
+				{"rotl", rotl},
+				{"rotr", rotr},
+				{"sub", sub},
+				{"mod", mod},
+				{"div", div},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;
