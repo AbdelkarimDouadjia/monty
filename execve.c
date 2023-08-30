@@ -23,7 +23,7 @@ int execute(char *content, stack_t **stack, unsigned int line_no, FILE *file)
 				{"rotr", rotr},
 				{"sub", sub},
 				{"mod", mod},
-				{"div", div},
+				{"div", divs},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;

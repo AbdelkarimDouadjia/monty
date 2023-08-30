@@ -1,46 +1,46 @@
 #include "monty.h"
 /**
   *sub- sustration
-  *@head: stack head
-  *@counter: line_number
+  *@stack: stack head
+  *@line_no: line_number
   *Return: no return
  */
-void sub(stack_t **head, unsigned int counter)
+void sub(stack_t **stack, unsigned int line_no)
 {
 	stack_t *aux;
 	int sus, nodes;
 
-	aux = *head;
+	aux = *stack;
 	for (nodes = 0; aux != NULL; nodes++)
 		aux = aux->next;
 	if (nodes < 2)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
-	aux = *head;
+	aux = *stack;
 	sus = aux->next->n - aux->n;
 	aux->next->n = sus;
-	*head = aux->next;
+	*stack = aux->next;
 	free(aux);
 }
 
 /**
  * mod - computes the rest of the division of the second
  * top element of the stack by the top element of the stack
- * @head: stack head
- * @counter: line_number
+ * @stack: stack head
+ * @line_no: line_number
  * Return: no return
 */
-void mod(stack_t **head, unsigned int counter)
+void mod(stack_t **stack, unsigned int line_no)
 {
 	stack_t *h;
 	int len = 0, aux;
 
-	h = *head;
+	h = *stack;
 	while (h)
 	{
 		h = h->next;
@@ -48,39 +48,39 @@ void mod(stack_t **head, unsigned int counter)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
+	h = *stack;
 	if (h->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", counter);
+		fprintf(stderr, "L%d: division by zero\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
 	aux = h->next->n % h->n;
 	h->next->n = aux;
-	*head = h->next;
+	*stack = h->next;
 	free(h);
 }
 
 /**
  * div - divides the top two elements of the stack.
- * @head: stack head
- * @counter: line_number
+ * @stack: stack head
+ * @line_no: line_number
  * Return: no return
 */
-void div(stack_t **head, unsigned int counter)
+void divs(stack_t **stack, unsigned int line_no)
 {
 	stack_t *h;
 	int len = 0, aux;
 
-	h = *head;
+	h = *stack;
 	while (h)
 	{
 		h = h->next;
@@ -88,23 +88,23 @@ void div(stack_t **head, unsigned int counter)
 	}
 	if (len < 2)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
+	h = *stack;
 	if (h->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", counter);
+		fprintf(stderr, "L%d: division by zero\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
 	aux = h->next->n / h->n;
 	h->next->n = aux;
-	*head = h->next;
+	*stack = h->next;
 	free(h);
 }

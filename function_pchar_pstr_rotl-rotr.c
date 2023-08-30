@@ -2,29 +2,29 @@
 /**
  * pchar - prints the char at the top of the stack,
  * followed by a new line
- * @head: stack head
- * @counter: line_number
+ * @stack: stack head
+ * @line_no: line_number
  * Return: no return
 */
-void pchar(stack_t **head, unsigned int counter)
+void pchar(stack_t **stack, unsigned int line_no)
 {
 	stack_t *h;
 
-	h = *head;
+	h = *stack;
 	if (!h)
 	{
-		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
 	if (h->n > 127 || h->n < 0)
 	{
-		fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_no);
 		fclose(bus.file);
 		free(bus.content);
-		free_stack(*head);
+		freemem(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", h->n);
@@ -33,16 +33,16 @@ void pchar(stack_t **head, unsigned int counter)
 /**
  * pstr - prints the string starting at the top of the stack,
  * followed by a new
- * @head: stack head
- * @counter: line_number
+ * @stack: stack head
+ * @line_no: line_number
  * Return: no return
 */
-void pstr(stack_t **head, unsigned int counter)
+void pstr(stack_t **stack, unsigned int line_no)
 {
 	stack_t *h;
-	(void)counter;
+	(void)line_no;
 
-	h = *head;
+	h = *stack;
 	while (h)
 	{
 		if (h->n > 127 || h->n <= 0)
@@ -57,42 +57,42 @@ void pstr(stack_t **head, unsigned int counter)
 
 /**
   *rotl- rotates the stack to the top
-  *@head: stack head
-  *@counter: line_number
+  *@stack: stack head
+  *@line_no: line_number
   *Return: no return
  */
-void rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
+void rotl(stack_t **stack,  __attribute__((unused)) unsigned int line_no)
 {
-	stack_t *tmp = *head, *aux;
+	stack_t *tmp = *stack, *aux;
 
-	if (*head == NULL || (*head)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
 	}
-	aux = (*head)->next;
+	aux = (*stack)->next;
 	aux->prev = NULL;
 	while (tmp->next != NULL)
 	{
 		tmp = tmp->next;
 	}
-	tmp->next = *head;
-	(*head)->next = NULL;
-	(*head)->prev = tmp;
-	(*head) = aux;
+	tmp->next = *stack;
+	(*stack)->next = NULL;
+	(*stack)->prev = tmp;
+	(*stack) = aux;
 }
 
 /**
   *rotr- rotates the stack to the bottom
-  *@head: stack head
-  *@counter: line_number
+  *@stack: stack head
+  *@line_no: line_number
   *Return: no return
  */
-void rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
+void rotr(stack_t **stack, __attribute__((unused)) unsigned int line_no)
 {
 	stack_t *copy;
 
-	copy = *head;
-	if (*head == NULL || (*head)->next == NULL)
+	copy = *stack;
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		return;
 	}
@@ -100,9 +100,9 @@ void rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
 	{
 		copy = copy->next;
 	}
-	copy->next = *head;
+	copy->next = *stack;
 	copy->prev->next = NULL;
 	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+	(*stack)->prev = copy;
+	(*stack) = copy;
 }
